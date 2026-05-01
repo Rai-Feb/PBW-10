@@ -92,6 +92,7 @@ mysqli_stmt_close($stmt);
                 <input type="date" class="form-control" id="deadline" name="deadline" required>
               </div>
 
+              <!-- Priority Dropdown -->
               <div class="mb-3">
                 <label for="priority" class="form-label">Priority</label>
                 <select class="form-select" id="priority" name="priority" required>
@@ -120,57 +121,63 @@ mysqli_stmt_close($stmt);
 
           <?php if ($item['status'] == 'pending'): ?>
             <div class="col w-auto">
-              <div class="card" style="width: 18rem;">
+              <div class="card" style="width: 18rem;" data-todo-id="<?= $item['id'] ?>">
                 <div class="card-body">
 
-                  <!-- Status -->
-                  <?php if ($item['status'] == 'pending'): ?>
-                    <span class="badge bg-warning text-dark mb-2">
-                      Pending
-                    </span>
-                  <?php else: ?>
-                    <span class="badge bg-success mb-2">
-                      Done
-                    </span>
-                  <?php endif ?>
+                  <!-- Status Badge -->
+                  <span class="badge bg-warning text-dark mb-2">
+                    Pending
+                  </span>
 
-                  <!-- title -->
+                  <!-- Priority Badge -->
+                  <?php if ($item['priority'] == 'low'): ?>
+                    <span class="badge bg-success mb-2">Low</span>
+                  <?php elseif ($item['priority'] == 'medium'): ?>
+                    <span class="badge bg-warning text-dark mb-2">Medium</span>
+                  <?php elseif ($item['priority'] == 'high'): ?>
+                    <span class="badge bg-danger mb-2">High</span>
+                  <?php endif; ?>
+
+                  <!-- Title -->
                   <h1 class="card-title h3">
-                    <?= $item['title'] ?>
+                    <?= htmlspecialchars($item['title']) ?>
                   </h1>
 
                   <!-- Description -->
                   <p class="card-text">
-                    <?= $item['description'] ?>
+                    <?= htmlspecialchars($item['description']) ?>
                   </p>
 
-                  <!-- Tanggal -->
+                  <!-- Deadline -->
                   <div class="d-flex align-items-center gap-1">
                     <p class="card-text">
                       <?= date('d M Y', strtotime($item['deadline'])) ?>
                     </p>
                   </div>
                 </div>
-                <div class="card-footer d-flex justify-content-between">
-                  <button
-                    class="btn btn-secondary btn-detail"
-                    data-bs-toggle="modal"
-                    data-bs-target="#detailTodoModal"
-                    data-title="Testing judul"
-                    data-description="Deskripsi todolist ada disini nantinya"
-                    data-deadline="15 Apr 2027"
-                    data-priority="Low"
-                    data-status="Done">
+                <div class="card-footer d-flex justify-content-between gap-2">
+                  <!-- Detail Button -->
+                  <button class="btn btn-secondary btn-detail" data-bs-toggle="modal" data-bs-target="#detailTodoModal"
+                    data-title="<?= htmlspecialchars($item['title']) ?>"
+                    data-description="<?= htmlspecialchars($item['description']) ?>"
+                    data-deadline="<?= date('d M Y', strtotime($item['deadline'])) ?>"
+                    data-priority="<?= ucfirst($item['priority']) ?>" data-status="<?= ucfirst($item['status']) ?>">
                     Detail
                   </button>
-                  <button class="btn btn-success">
+
+                  <!-- Done Button (Update Status) -->
+                  <button class="btn btn-success done-btn">
                     Done
+                  </button>
+
+                  <!-- Delete Button -->
+                  <button class="btn btn-danger delete-btn">
+                    Delete
                   </button>
                 </div>
               </div>
             </div>
           <?php endif; ?>
-
 
         <?php endforeach; ?>
       </div>
