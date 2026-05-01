@@ -1,12 +1,15 @@
 <?php
-    $host = 'localhost';
-    $user = 'root';
-    $pass = '';
-    $db   = 'todolist_db';
 
-    $conn = mysqli_connect($host, $user, $pass, $db);
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "todolist_db";
 
-    if (!$conn) {
-        die("Koneksi Database Gagal: " . mysqli_connect_error());
-    }
+// Buat koneksi
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+// Cek koneksi
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 ?>

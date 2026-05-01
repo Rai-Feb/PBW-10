@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  //Button Update
   document.addEventListener("click", function (e) {
     if (e.target.closest(".done-btn")) {
       const button = e.target.closest(".done-btn");
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Delete button handler
+    //Button Delete
     if (e.target.closest(".delete-btn")) {
       const button = e.target.closest(".delete-btn");
       const card = button.closest(".card");

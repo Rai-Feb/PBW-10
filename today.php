@@ -93,7 +93,7 @@
     <section class="container">
       <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-4 justify-content-center">
         <div class="col w-auto">
-          <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem;" data-todo-id="1">
             <div class="card-body">
               <span class="badge bg-warning text-dark mb-2">Pending</span>
               <h1 class="card-title h3">Tugas PBW</h1>
@@ -114,14 +114,14 @@
                   data-status="Done">
                   Detail
                 </button>
-              <button class="btn btn-success">
+              <button class="btn btn-success done-btn">
                 Done
               </button>
             </div>
           </div>
         </div>
         <div class="col w-auto">
-          <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem;" data-todo-id="2">
             <div class="card-body">
               <span class="badge bg-warning text-dark mb-2">Pending</span>
               <h1 class="card-title h3">Title Todo</h1>
@@ -144,7 +144,7 @@
                   data-status="Done">
                   Detail
                 </button>
-              <button class="btn btn-success">
+              <button class="btn btn-success done-btn">
                 Done
               </button>
             </div>
@@ -181,7 +181,7 @@
     </div>
   </main>
 
-  <script src="assets/index.js"></script>
+    <script src="assets/index.js"></script>
   <script src="assets/js/bootstrap.js"></script>
 </body>
 

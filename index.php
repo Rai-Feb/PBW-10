@@ -211,6 +211,7 @@ mysqli_stmt_close($stmt);
     </div>
   </main>
 
+  <!-- ✅ PERBAIKI: Path JS yang benar -->
   <script src="assets/index.js"></script>
   <script src="assets/js/bootstrap.js"></script>
   <!-- marsh -->
